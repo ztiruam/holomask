@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html">
+	<TITLE>HoloMask</TITLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<H1>Holographic Foucault Null Test</H1>
+<p>
+by Mauritz Andersson
+</p>
+<p>
+Last updated: Dec 6, 2012<br/>
+Relesed as Open Source (MIT License): Mars 31, 2015
+</p>
+<p>
+This page describes a method for a Foucault null test using a 
+computer generated holographic mask in front of the mirror.
+</p>
+<a href="onmirror.jpg"><IMG SRC="onmirror_small.jpg" BORDER=0></a><br/>
+<p>
+When illuminated by a point source at the center of curvature of the mirror
+the mask produces a set of converging wavefronts corresponding to
+different diffraction orders. 
+The zero order diffraction gives the same wavefront as without a mask.
+The first order diffraction (on one side) has a spherical abberation corresponding
+to the desired parabolic mirror but with a negative sign. This produces
+a perfect spherical wavefront if the mirror is a perfect paraboloid.
+</p>
+<p>
+Here you can see what the various diffraction orders look like
+when seen through a eyepiece. The m=0 order is the unmodified wavefront
+from the  mirror. The m=1 order has the compensating spherical abberation
+and should therfore focus to a point. The m=-1 order has double spherical
+abberation. In  addition weaker order with m=+-3 can bee seen.
+</p>
+
+<a href="focal.jpg"><IMG SRC="focal_small.jpg" BORDER=0 ></a>
+
+
+<h2>Cutting the mask</h2>
+<p>
+This is admittedly a little tedious, but with a sharp scalpel it
+can be done in a reasonable time.
+</p>
+<p>
+The mask can be printed on ordinary paper and reinforced with
+tape before being cut. Better is to use a slighty stiffer
+paper to print on. The horizontal connections between the 
+fringes serve to give rigidity to the mask.
+</p>
+<p>
+The small center black square serves as a reference point for alignment.
+</p>
+<a href="partially.jpg"><IMG SRC="partially_small.jpg" BORDER=0></a>
+<a href="complete.jpg"><IMG SRC="complete_small.jpg" BORDER=0></a><br/>
+
+
+<h2>Testing procedure</h2>
+<p>
+The testing procedure is similar to the ordinary Foucault test.
+The difference is that a (reasonably) monochromatic light source
+with a known wavelength has to be used.
+It can be a point source or a narrow slit. 
+</p>
+<p>
+One good light source is a laser pointer without the
+collimation lens, or with an additional small lens
+for increasing divergence.
+</p>
+<p>
+WARNING: Take extreme care when using lasers. The maximum power
+that should reach the eye is less than 1 mW and only if you
+then by reflex close the eye in a fraction of a second.
+So, do not stare into such a beam. You absolutely have to
+attenuate the beam by modifying the control circuit or use
+a dense filter or both.
+</p>
+<p>
+Alternatively, a normal LED can be used provided that
+the emitted wavelength range is within the limit
+shown when the mask is computed below.
+</p>
+
+<p>
+The big difference is that the knife edge for testing the returning
+wavefront now has to be a slit instead. The slit size has to
+be small enough that the mask cutouts are not resolved when
+looking through the slit, but not too small since then the
+resolution is hampered. A good size is 100-200 microns (0.1-0.2 mm). 
+The slit can be made with two razor blades. 
+Make the slit adjustable in width. Look through the slit at the mask
+from the same distance
+as when testing the mirror (radius of curvature)
+and then adjust the slit width just small enough that the mask
+cutouts are not resolved. 
+</p>
+
+<p>
+The testing x-y stage can be simpler compared to a Foucault stage
+since no measurements has to be made. I can be either moving or
+stationary light source. However, stability is as important.
+</p>
+<p>
+With the test slit well inside the focus the test is like an
+inverted wire test. You will see three bright lines
+of different straigthness when moving the
+slit sideways. (Further to the side, additional higher order lines
+can be seen)
+The middle (and brightest) line is what you would see without the mask.
+One will have stronger curvature and the other (here the right line, m=1)
+should be straight if the mirror is perfect. See left animation below.
+(The test mirror is overcorrected and the rightmost line is not
+perfectly straight...)
+</p>
+<p>
+In the right animation below you can see how
+it looks when at best focus for the m=1 line. It should behave
+as the null you would see in a spherical mirror. (Again, for the
+present mirror it doesn't, the overcorrection is apparent. And a small central
+hill is present.)
+</p>
+<IMG SRC="sequence_inside.gif" BORDER=0>
+<IMG SRC="sequence_foc.gif" BORDER=0><br/>
+
+
+
+<h2>Compute a HoloMask</h2>
+
+
+<p>
+<IMG SRC="holomask_example.jpg" BORDER=0 ALIGN="right">
+Here you can submit a request to compute a mask for your mirror. The bigger the slit size, the better
+the spatial resolution but also more fringes to cut out... A good compromise is
+probably a slit size of 0.2 mm.
+</p>
+<p>
+Do not use too small slit since you will get low resolution when looking throug it
+at the mirror. The maximum period of the mask fringes, meaning the width of the widest
+fringes is about the resolution to expect. The smallest useful slit is probably around
+0.1 mm.
+</p>
+<p>
+Note: radius of curvature = focal length * 2.
+</p>
+
+<form method="post"  action="holomask_wave_order_src.php" method="post">
+ <table>
+  <tr>
+ <td>Diffraction order: </td>
+ <td>
+ <select name="order" >
+ <option value="1">1</option>
+ <option value="3">3 (experimental)</option>
+ <select/>
+ </td>
+  </tr>
+  <tr>
+ <td>Mirror diameter (mm): </td>
+ <td><input type="text" name="diam" /></td>
+  </tr>
+  <tr>
+ <td>Radius of curvature (mm): </td>
+ <td><input type="text" name="radi" /></td>
+  </tr>
+ <tr>
+ <td>Conic (-1 parabola): </td>
+ <td><input type="text" name="k" /></td>
+  </tr>
+  <tr>
+ <td>Wavelength (nm): </td>
+ <td><input type="text" name="lambda" /></td>
+  </tr>
+ <td>Slit size (mm): </td>
+ <td><input type="text" name="slit" /> </td>
+  </tr>
+ </table>
+ <p><input type="submit" /></p>
+ 
+</form>
+
+<h3>Notes</h3>
+<p>
+Displacing the mask introduces coma in the wavefront but
+this could also be used to find the optical center of
+the paraboloid if it is not the same as the mechanical
+center of the glass.
+</p>
+
+<p>In principle you do not need to cut a mask for the entire
+mirror, but can make do with a central horizontal portion
+of the mask.
+</p>
+
+<p>
+A HeNe laser has a wavelength of 632.8 nm. For laserpointer you have to check
+the datasheet since they vary a bit among manufacturers. If you have a mirror
+which deviates less than a wavelength from a sphere you could consider
+using a LED, check the the datasheet for the spectral width of the light, it
+is typically around 40 nm.
+</p>
+
+<h3>Questions and comments</h2>
+<p>Mail me at mauritz_(at)_xiluma.se </a>
+</p>
+<p>Or discuss the topic at the atm_free or atm mail-list: 
+	</p>
+	<p><a href="http://tech.dir.groups.yahoo.com/group/atm_free/">http://tech.dir.groups.yahoo.com/group/atm_free/</a></p>
+	<p>
+	<a href="http://www.atmlist.net/">http://www.atmlist.net/</a> </p>
+
+</BODY>
+</HTML>
